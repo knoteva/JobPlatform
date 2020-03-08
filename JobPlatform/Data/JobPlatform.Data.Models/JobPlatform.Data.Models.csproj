@@ -22,5 +22,9 @@
   <ItemGroup>
     <ProjectReference Include="..\JobPlatform.Data.Common\JobPlatform.Data.Common.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
   
 </Project>

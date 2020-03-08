@@ -1,5 +1,7 @@
 ﻿namespace JobPlatform.Web
 {
+    using System.Reflection;
+
     using JobPlatform.Data;
     using JobPlatform.Data.Common;
     using JobPlatform.Data.Common.Repositories;
@@ -17,7 +19,6 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using System.Reflection;
 
     public class Startup
     {

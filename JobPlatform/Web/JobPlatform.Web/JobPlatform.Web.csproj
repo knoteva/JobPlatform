@@ -45,4 +45,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Moderator\" />
+  </ItemGroup>
 </Project>
