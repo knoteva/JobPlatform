@@ -4,27 +4,32 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Employer : ApplicationUser
+    using JobPlatform.Data.Common.Models;
+    using Microsoft.AspNetCore.Identity;
+
+    public class Employer : BaseDeletableModel<int>
     {
         public Employer()
         {
             this.Jobs = new HashSet<Job>();
         }
 
-        // [Required]
-        // public string UserName { get; set; }
+        [Required]
+        public string UserName { get; set; }
+
         [Required]
         public string CompanyName { get; set; }
 
         [Required]
         public string Description { get; set; }
 
-        // [Required]
-        // public string Email { get; set; }
+        [Required]
+        public string Email { get; set; }
 
-        // [RegularExpression(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$")]
-        // [Required]
-        // public string PhoneNumber { get; set; }
+        [RegularExpression(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$")]
+        [Required]
+        public string PhoneNumber { get; set; }
+
         [Required]
         public string Address { get; set; }
 
