@@ -8645,11 +8645,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\SpiceRestaurant\\SpiceRestaurant\\SpiceRestaurant.csproj",
+      "projectUniqueName": "D:\\Programing\\Softuni\\01. ASP.NET Core - февруари 2020\\00. Project\\Project\\SpiceRestaurant\\SpiceRestaurant\\SpiceRestaurant.csproj",
       "projectName": "SpiceRestaurant",
-      "projectPath": "D:\\Github\\SpiceRestaurant\\SpiceRestaurant\\SpiceRestaurant.csproj",
+      "projectPath": "D:\\Programing\\Softuni\\01. ASP.NET Core - февруари 2020\\00. Project\\Project\\SpiceRestaurant\\SpiceRestaurant\\SpiceRestaurant.csproj",
       "packagesPath": "C:\\Users\\knote\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\SpiceRestaurant\\SpiceRestaurant\\obj\\",
+      "outputPath": "D:\\Programing\\Softuni\\01. ASP.NET Core - февруари 2020\\00. Project\\Project\\SpiceRestaurant\\SpiceRestaurant\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
