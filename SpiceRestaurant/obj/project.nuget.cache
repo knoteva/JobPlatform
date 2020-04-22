@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wMP2lSxLxfnkD1458vNowXSuneEKYCk0AAK2xQgBEXvn70wRbkP/q1f/CDHaZGIk8a0zyQnG3mfTFx5C8PP2lw==",
+  "dgSpecHash": "peOOJyoexkhJ+UnV6Sk3Fx/v9yKMO9fLp6lEKxfn8P8X6hBSWQjyJCdJjmseByCY3ya26Z80NqdSyBhjBUhgSA==",
   "success": true,
-  "projectFilePath": "D:\\Programing\\Softuni\\01. ASP.NET Core - февруари 2020\\00. Project\\Project\\SpiceRestaurant\\SpiceRestaurant\\SpiceRestaurant.csproj",
+  "projectFilePath": "D:\\Github\\SpiceRestaurant\\SpiceRestaurant\\SpiceRestaurant.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\knote\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.3\\microsoft.aspnetcore.cryptography.internal.3.1.3.nupkg.sha512",
     "C:\\Users\\knote\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.3\\microsoft.aspnetcore.cryptography.keyderivation.3.1.3.nupkg.sha512",
