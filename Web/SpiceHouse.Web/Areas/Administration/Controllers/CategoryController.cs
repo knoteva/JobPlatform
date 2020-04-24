@@ -1,7 +1,6 @@
-﻿using System.Linq;
-
-namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
@@ -46,7 +45,8 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
                 var categoryExists = this._db.Categories.Any(c => c.Name == category.Name);
                 if (categoryExists)
                 {
-                    this.StatusMessage = "Error: The " + category.Name + " already exist";
+                    this.ModelState.AddModelError("Name", "Error: The \"" + category.Name + "\" already exist");
+                    return this.View(category);
                 }
                 else
                 {
@@ -136,7 +136,7 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
-        //GET Details
+        // GET: Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -153,5 +153,4 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
             return this.View(category);
         }
     }
-
 }

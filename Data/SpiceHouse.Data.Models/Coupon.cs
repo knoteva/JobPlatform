@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using SpiceHouse.Data.Models.Enums;
-
-namespace SpiceHouse.Data.Models
+﻿namespace SpiceHouse.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using SpiceHouse.Data.Models.Enums;
+
     public class Coupon
     {
         public int Id { get; set; }

@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using Microsoft.AspNetCore.Mvc;
+
     public class Category
     {
         public Category()
@@ -14,6 +16,7 @@
 
         [Required]
         [Display(Name = "Category Name")]
+        [Remote("IsExist", "Place", ErrorMessage = "Category already exist!")]
         public string Name { get; set; }
 
         public ICollection<SubCategory> SubCategories { get; set; }

@@ -37,7 +37,8 @@
             var categories = await this._db.Categories.ToListAsync();
             if (!categories.Any())
             {
-                //return this.RedirectToAction(nameof(this.Index));
+                // this.ModelState.AddModelError("Name", "Error: The already exist");
+                // return this.RedirectToAction(nameof(this.Index));
                 return this.Redirect("/Administration/Category");
             }
 
@@ -188,7 +189,7 @@
                 return this.NotFound();
             }
 
-            var subCategory = await this._db.SubCategories.Include(s => s.Category).SingleOrDefaultAsync(m => m.Id == id);
+            var subCategory = await this._db.SubCategories.Include(s => s.Category).SingleOrDefaultAsync(c => c.Id == id);
             if (subCategory == null)
             {
                 return this.NotFound();
