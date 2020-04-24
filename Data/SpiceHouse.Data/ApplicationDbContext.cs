@@ -28,6 +28,8 @@
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<SubCategory> SubCategories { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -67,6 +69,12 @@
                 method.Invoke(null, new object[] { builder });
             }
 
+            //builder.Entity<SubCategory>()
+            //    .HasOne(s => s.Category)
+            //    .WithMany(c => c.SubCategories)
+            //    .IsRequired()
+            //    .OnDelete(DeleteBehavior.Cascade);
+
             // Disable cascade delete
             var foreignKeys = entityTypes
                 .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Cascade));
@@ -74,6 +82,9 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            //builder.Entity<EmployeeTask>()
+            //    .HasKey(k => new { k.TaskId, k.EmployeeId });
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

@@ -10,8 +10,8 @@ using SpiceHouse.Data;
 namespace SpiceHouse.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200423081959_AddCategoryToDatabase")]
-    partial class AddCategoryToDatabase
+    [Migration("20200424075825_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -293,6 +293,27 @@ namespace SpiceHouse.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("SpiceHouse.Data.Models.SubCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("SubCategories");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("SpiceHouse.Data.Models.ApplicationRole", null)
@@ -340,6 +361,15 @@ namespace SpiceHouse.Data.Migrations
                     b.HasOne("SpiceHouse.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SpiceHouse.Data.Models.SubCategory", b =>
+                {
+                    b.HasOne("SpiceHouse.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

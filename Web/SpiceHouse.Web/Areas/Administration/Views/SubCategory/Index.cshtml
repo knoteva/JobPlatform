@@ -1,17 +1,18 @@
-﻿@model IEnumerable<SpiceHouse.Data.Models.Category>
+﻿@model IEnumerable<SpiceHouse.Data.Models.SubCategory>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br/><br/>
+<br />
+<br />
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-info">Category List</h2>
+            <h2 class="text-info">Sub Category List</h2>
         </div>
         <div class="col-6 text-right">
-            <partial name="_CreateButtonPartial"/>
+            <partial name="_CreateButtonPartial" />
         </div>
     </div>
     <br />
@@ -23,6 +24,9 @@
                     <th>
                         @Html.DisplayNameFor(m => m.Name)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Category.Name)
+                    </th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -33,6 +37,9 @@
                             @Html.DisplayFor(m => item.Name)
                         </td>
                         <td>
+                            @Html.DisplayFor(m => item.Category.Name)
+                        </td>
+                        <td>
                             <partial name="_ThreeButtonsPartial" model="item.Id" />
                         </td>
                     </tr>
@@ -41,7 +48,7 @@
         }
         else
         {
-            <p>No Categories!</p>
+            <p>No Sub Categories!</p>
         }
     </div>
 </div>

@@ -1,13 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 
 namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using SpiceHouse.Data;
     using SpiceHouse.Data.Models;
 
@@ -16,16 +14,20 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
     {
         private readonly ApplicationDbContext _db;
 
-        // Create constructor
+        // Create constructor for db
         public CategoryController(ApplicationDbContext db)
         {
             this._db = db;
         }
 
+        [TempData]
+        public string StatusMessage { get; set; }
+
         // GET: Pass all to the view.
         public async Task<IActionResult> Index()
         {
-            return this.View(await this._db.Categories.ToListAsync());
+            var categories = await this._db.Categories.ToListAsync();
+            return this.View(categories);
         }
 
         // GET: Create
@@ -39,15 +41,23 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category category)
         {
-            if (!this.ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                return this.View(category);
+                var categoryExists = this._db.Categories.Any(c => c.Name == category.Name);
+                if (categoryExists)
+                {
+                    this.StatusMessage = "Error: The " + category.Name + " already exist";
+                }
+                else
+                {
+                    this._db.Categories.Add(category);
+                    await this._db.SaveChangesAsync();
+
+                    return this.RedirectToAction(nameof(this.Index));
+                }
             }
 
-            this._db.Categories.Add(category);
-            await this._db.SaveChangesAsync();
-
-            return this.RedirectToAction(nameof(this.Index));
+            return this.View(category);
         }
 
         // GET: Edit
@@ -111,6 +121,14 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
             if (category == null)
             {
                 return this.View();
+            }
+
+            foreach (var sub in this._db.SubCategories)
+            {
+                if (sub.CategoryId == id)
+                {
+                    this._db.SubCategories.Remove(sub);
+                }
             }
 
             this._db.Categories.Remove(category);
