@@ -42,4 +42,8 @@
     <ProjectReference Include="..\SpiceHouse.Web.Infrastructure\SpiceHouse.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\SpiceHouse.Web.ViewModels\SpiceHouse.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Customer\" />
+  </ItemGroup>
 </Project>
