@@ -1,22 +1,22 @@
-﻿@model SpiceHouse.Data.Models.SubCategory
+﻿@model SpiceHouse.Data.Models.ViewModels.MenuItemViewModel
 @{
     ViewData["Title"] = "Delete";
 }
 
 <form method="post">
     <div class="border backgroundWhite">
-        <h2 class="text-info">Sub Category Delete</h2>
+        <h2 class="text-info">Menu Item Delete</h2>
         <br />
-        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="MenuItem.Id"/>
         <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Name" class="custom-label"></label>
-                </div>
-                <div class="col-5">
-                    <input asp-for="Name" class="form-control" readonly/>
-                </div>
+            <div class="col-2">
+                <label asp-for="MenuItem.Name" class="custom-label"></label>
             </div>
-            @*<div class="form-group row">
+            <div class="col-5">
+                <input asp-for="MenuItem.Name" class="form-control" readonly/>
+            </div>
+        </div>
+        @*<div class="form-group row">
                 <div class="col-2">
                     <label asp-for="Category.Name" class="custom-label"></label>
                 </div>
@@ -27,7 +27,7 @@
         <br/>
         <div class="form-group row">
             <div class="col-5 offset-2">
-                <partial name="_Delete_BackButton" model="Model.Id"/>
+                <partial name="_Delete_BackButton" model="Model.MenuItem.Id"/>
             </div>
         </div>
     </div>

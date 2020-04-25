@@ -52,7 +52,8 @@
 
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>function updateSubCategoryList() {
+    <script>
+        function updateSubCategoryList() {
             var categorySelected = document.getElementById("ddlCategorylist").value;
             $list = $('#SubCategoryList');
             $.ajax({
@@ -75,7 +76,10 @@
         });
         $("#ddlCategorylist").on("change", function () {
             updateSubCategoryList();
-        });</script>
+        });
+    </script>
+    
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
 
 

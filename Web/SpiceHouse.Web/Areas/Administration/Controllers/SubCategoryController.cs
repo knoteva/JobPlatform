@@ -69,6 +69,9 @@
                 {
                     this._db.SubCategories.Add(model.SubCategory);
                     await this._db.SaveChangesAsync();
+
+                    // var category = this._db.Categories.FirstOrDefault(c => c.Id == model.SubCategory.CategoryId);
+                    // category.SubCategories.Add(model.SubCategory);
                     return this.RedirectToAction(nameof(this.Index));
                 }
             }
@@ -81,8 +84,6 @@
                 StatusMessage = this.StatusMessage,
             };
 
-            var category = new Category();
-            category.SubCategories.Add(model.SubCategory);
 
             return this.View(modelVm);
         }
@@ -179,6 +180,7 @@
             this._db.SubCategories.Remove(subCategory);
             await this._db.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));
+
         }
 
         // GET: Details
