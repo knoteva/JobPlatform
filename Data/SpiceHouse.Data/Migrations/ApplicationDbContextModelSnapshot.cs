@@ -376,6 +376,27 @@ namespace SpiceHouse.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("SpiceHouse.Data.Models.ShoppingCar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MenuItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShoppingCars");
+                });
+
             modelBuilder.Entity("SpiceHouse.Data.Models.SubCategory", b =>
                 {
                     b.Property<int>("Id")
