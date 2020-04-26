@@ -73,3 +73,14 @@
 </div>
 
 
+@section Scripts{
+    <script>
+    tinymce.init({
+        forced_root_block: false,
+        selector: 'textarea',
+        plugins: "lists",
+        readonly : 1
+    });</script>
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

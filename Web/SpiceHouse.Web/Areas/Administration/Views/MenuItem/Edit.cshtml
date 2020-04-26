@@ -11,7 +11,7 @@
 <form method="post" asp-action="Edit" enctype="multipart/form-data">
     <div class="border backgroundWhite row">
         <input type="hidden" asp-for="MenuItem.Id" />
-        <h2 class="text-info">Edit MenuItem</h2>
+        <h2 class="text-info">Edit Menu Item</h2>
         <br />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -114,15 +114,18 @@
         function getSubCategory() {
             var url = '@Url.Content("~/")' + "Administration/SubCategory/GetSubCategory";
             var ddlsoruce = '#CategoryId';
-            $.getJSON(url, { id: $(ddlsoruce).val() }, function (data) {
-                var items = '';
-                $('#SubCategoryId').empty();
-                $.each(data, function (i, subcategory) {
-                    items += "<option value='" + subcategory.value + "'>" + subcategory.text + "</option>";
-                });
+            $.getJSON(url,
+                { id: $(ddlsoruce).val() },
+                function(data) {
+                    var items = '';
+                    $('#SubCategoryId').empty();
+                    $.each(data,
+                        function(i, subcategory) {
+                            items += "<option value='" + subcategory.value + "'>" + subcategory.text + "</option>";
+                        });
 
-                $('#SubCategoryId').html(items);
-            })
+                    $('#SubCategoryId').html(items);
+                });
         }
     </script>
 

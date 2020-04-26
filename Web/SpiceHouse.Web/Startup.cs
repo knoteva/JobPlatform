@@ -1,4 +1,6 @@
-﻿namespace SpiceHouse.Web
+﻿using System;
+
+namespace SpiceHouse.Web
 {
     using System.Reflection;
 
@@ -34,6 +36,12 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+            });
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
@@ -67,7 +75,6 @@
 
             services.ConfigureApplicationCookie(options =>
             {
-
                 options.LoginPath = $"/Identity/Account/Login";
 
                 options.LogoutPath = $"/Identity/Account/Logout";
@@ -75,7 +82,6 @@
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,6 +111,7 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseRouting();
 

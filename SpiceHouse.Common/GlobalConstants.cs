@@ -8,5 +8,7 @@
         public const string CustomerRoleName = "Customer";
 
         public const string DefaultFoodImage = "default_food.png";
+
+        public const string SsCarItemsCount = "ssCarItemsCount";
     }
 }
