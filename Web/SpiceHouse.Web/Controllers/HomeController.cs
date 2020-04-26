@@ -40,8 +40,14 @@ namespace SpiceHouse.Web.Areas.Customer.Controllers
 
             if (claim != null)
             {
-                var count = this._db.ShoppingCars.Where(u => u.ApplicationUserId == claim.Value).ToList().Count;
-                this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, count);
+                var allItems = this._db.ShoppingCars.Where(u => u.ApplicationUserId == claim.Value).ToList();
+                var allItemsCount = 0;
+                foreach (var count in allItems)
+                {
+                    allItemsCount += count.ItemsCount;
+                }
+
+             this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, allItemsCount);
             }
 
             return this.View(indexViewModel);
@@ -81,7 +87,7 @@ namespace SpiceHouse.Web.Areas.Customer.Controllers
                 }
                 else
                 {
-                    cartFromDb.Count += carObject.Count;
+                    cartFromDb.ItemsCount += carObject.ItemsCount;
                 }
 
                 await this._db.SaveChangesAsync();

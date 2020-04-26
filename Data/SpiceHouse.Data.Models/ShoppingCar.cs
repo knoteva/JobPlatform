@@ -10,7 +10,7 @@ namespace SpiceHouse.Data.Models
     {
         public ShoppingCar()
         {
-            this.Count = 1;
+            this.ItemsCount = 1;
         }
 
 
@@ -30,6 +30,6 @@ namespace SpiceHouse.Data.Models
 
 
         [Range(1, int.MaxValue, ErrorMessage = "The value should be greater or equal to {1}")]
-        public int Count { get; set; }
+        public int ItemsCount { get; set; }
     }
 }
