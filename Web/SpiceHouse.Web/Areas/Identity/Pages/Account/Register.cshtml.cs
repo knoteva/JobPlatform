@@ -92,7 +92,15 @@
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = this.Input.Email, Email = this.Input.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = this.Input.Email,
+                    Email = this.Input.Email,
+                    Name = this.Input.Name,
+                    City = this.Input.City,
+                    Address = this.Input.Address,
+                    PhoneNumber = this.Input.PhoneNumber,
+                };
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
@@ -115,6 +123,7 @@
                     //}
                     //else
                     //{
+
                     if (_userManager.Users.Count() == 1)
                     {
                         await _userManager.AddToRoleAsync(user, "Administrator");
@@ -124,7 +133,9 @@
                         await _userManager.AddToRoleAsync(user, "Customer");
                     }
                     await this._signInManager.SignInAsync(user, isPersistent: false);
-                        return this.LocalRedirect(returnUrl);
+                        
+                    return this.LocalRedirect(returnUrl);
+
                   //  }
                 }
 

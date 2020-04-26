@@ -1,4 +1,7 @@
-﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+using SpiceHouse.Common;
+
+namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -9,6 +12,7 @@
     using SpiceHouse.Data.Models;
 
     [Area("Administration")]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _db;

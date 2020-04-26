@@ -1,4 +1,7 @@
-﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+using SpiceHouse.Common;
+
+namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
@@ -9,6 +12,7 @@
     using System.Threading.Tasks;
 
     [Area("Administration")]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CouponController : Controller
     {
         private readonly ApplicationDbContext _db;

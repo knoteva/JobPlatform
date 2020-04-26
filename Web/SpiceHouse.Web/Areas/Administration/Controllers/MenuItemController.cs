@@ -1,4 +1,6 @@
-﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System;
     using System.IO;
@@ -14,6 +16,7 @@
     using SpiceHouse.Data.Models.ViewModels;
 
     [Area("Administration")]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class MenuItemController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -42,8 +45,14 @@
         }
 
         // GET: Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var categories = await this._db.Categories.ToListAsync();
+            if (!categories.Any())
+            {
+                return this.Redirect("/Administration/Category");
+            }
+
             return this.View(this.MenuItemViewModel);
         }
 

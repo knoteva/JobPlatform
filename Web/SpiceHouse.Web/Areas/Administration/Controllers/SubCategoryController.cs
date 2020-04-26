@@ -1,4 +1,7 @@
-﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+using SpiceHouse.Common;
+
+namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,6 +15,7 @@
     using SpiceHouse.Data.Models.ViewModels;
 
     [Area("Administration")]
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class SubCategoryController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -37,8 +41,6 @@
             var categories = await this._db.Categories.ToListAsync();
             if (!categories.Any())
             {
-                // this.ModelState.AddModelError("Name", "Error: The already exist");
-                // return this.RedirectToAction(nameof(this.Index));
                 return this.Redirect("/Administration/Category");
             }
 
