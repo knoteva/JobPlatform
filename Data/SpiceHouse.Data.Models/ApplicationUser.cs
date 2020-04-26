@@ -1,4 +1,7 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
+
+using System.ComponentModel.DataAnnotations;
+
 namespace SpiceHouse.Data.Models
 {
     using System;
@@ -27,6 +30,13 @@ namespace SpiceHouse.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        // Additional entities
+        public string Name { get; set; }
+
+        public string City { get; set; }
+
+        public string Address { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
