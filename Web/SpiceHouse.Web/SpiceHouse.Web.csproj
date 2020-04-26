@@ -44,6 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Customer\" />
+    <Folder Include="Areas\Customer\Views\" />
   </ItemGroup>
 </Project>

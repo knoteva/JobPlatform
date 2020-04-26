@@ -31,7 +31,7 @@
         public virtual Category Category { get; set; }
 
         [Display(Name = "SubCategory")]
-        public int SubCategoryId { get; set; }
+        public int? SubCategoryId { get; set; }
 
         [ForeignKey("SubCategoryId")]
         public virtual SubCategory SubCategory { get; set; }

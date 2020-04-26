@@ -131,6 +131,14 @@
                 }
             }
 
+            foreach (var menuItem in this._db.MenuItems)
+            {
+                if (menuItem.CategoryId == id)
+                {
+                    this._db.MenuItems.Remove(menuItem);
+                }
+            }
+
             this._db.Categories.Remove(category);
             await this._db.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));

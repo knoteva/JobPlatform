@@ -54,7 +54,21 @@
         // MenuItemViewModel MenuItemViewModel: not needed because of the BindProperty
         public async Task<IActionResult> CreatePost()
         {
-            this.MenuItemViewModel.MenuItem.SubCategoryId = Convert.ToInt32(this.Request.Form["SubCategoryId"].ToString());
+            var subCategoryIdToInt = 0;
+
+            if (this.Request.Form["SubCategoryId"].Any())
+            {
+                subCategoryIdToInt = Convert.ToInt32(this.Request.Form["SubCategoryId"].ToString());
+            }
+
+            if (subCategoryIdToInt == 0)
+            {
+                this.MenuItemViewModel.MenuItem.SubCategoryId = null;
+            }
+            else
+            {
+                this.MenuItemViewModel.MenuItem.SubCategoryId = subCategoryIdToInt;
+            }
 
             if (!this.ModelState.IsValid)
             {
@@ -122,7 +136,21 @@
                 return this.NotFound();
             }
 
-            this.MenuItemViewModel.MenuItem.SubCategoryId = Convert.ToInt32(this.Request.Form["SubCategoryId"].ToString());
+            var subCategoryIdToInt = 0;
+
+            if (this.Request.Form["SubCategoryId"].Any())
+            {
+                subCategoryIdToInt = Convert.ToInt32(this.Request.Form["SubCategoryId"].ToString());
+            }
+
+            if (subCategoryIdToInt == 0)
+            {
+                this.MenuItemViewModel.MenuItem.SubCategoryId = null;
+            }
+            else
+            {
+                this.MenuItemViewModel.MenuItem.SubCategoryId = subCategoryIdToInt;
+            }
 
             if (!this.ModelState.IsValid)
             {
