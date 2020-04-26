@@ -2,8 +2,7 @@
 
 @if (Model.Any())
 {
-    <div class="col-12">
-    @*<div class="col-12 post @Model.FirstOrDefault().Category.Name.Replace(" ","") menu-restaurant">*@
+    <div class="col-12 post @Model.FirstOrDefault().Category.Name.Replace(" ",string.Empty) menu-restaurant">
         <div class="row">
             <h3 class="text-success"> @Model.FirstOrDefault().Category.Name </h3>
         </div>
@@ -13,7 +12,7 @@
             <div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px">
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
-                        <img src="@item.Picture" style="width:100%;" alt=""/>
+                        <img src="@item.Picture" width="100%" />
                     </div>
                     <div class="col-md-9 col-sm-12">
                         <div class="row pr-3">
@@ -21,15 +20,15 @@
                                 <label class="text-primary" style="font-size:130%;">@item.Name</label>
                                 @if (item.Spicyness == "1")
                                 {
-                                    <img srcset="/images/sweet.png" title="Sweet" alt=""/>
+                                    <img srcset="/images/sweet.png" title="Sweet" alt="" />
                                 }
                                 @if (item.Spicyness == "2")
                                 {
-                                    <img srcset="/images/middle.png" title="Middle" alt=""/>
+                                    <img srcset="/images/middle.png" title="Middle" alt="" />
                                 }
                                 @if (item.Spicyness == "3")
                                 {
-                                    <img srcset="/images/hot.png" title="Hot" alt=""/>
+                                    <img srcset="/images/hot.png" title="Hot" alt="" />
                                 }
                             </div>
                             <div class="col-4 text-right">
@@ -48,5 +47,6 @@
                 </div>
             </div>
         }
+        <div class="p-4"></div>
     </div>
 }

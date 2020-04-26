@@ -1,9 +1,9 @@
 ﻿@model SpiceHouse.Data.Models.ViewModels.IndexViewModel
-
 <br />
-
+@*Coupons*@
 @if (Model.Coupon.ToList().Count > 0)
 {
+
     <div class="border">
         <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel" data-interval="2500">
             <div class="carousel-inner">
@@ -17,22 +17,44 @@
             </div>
         </div>
     </div>
-
-    <br />
-    <br />
-
-    <div class="backgroundWhite container">
-
-
-        @foreach (var category in Model.Category)
-        {
-            <div class="row" id="menu-wrapper">
-                <partial name="_MenuItemsPartial" model="@Model.MenuItem.Where(u=>u.Category.Name.Equals(category.Name))" />
-            </div>
-        }
-    </div>
 }
+
+<div class="backgroundWhite container">
+    <ul id="menu-filters" class="nav navbar d-flex d-inline-flex">
+        <li class="active btn btn-secondary ml-1 mr-1 btn btn-default" data-filter=".menu-restaurant">Show All</li>
+        @foreach (var item in Model.Category)
+        {
+            <li class="ml-1 mr-1 btn btn-default" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
+        }
+    </ul>
+
+    @foreach (var category in Model.Category)
+    {
+        <div class="row" id="menu-wrapper">
+            <partial name="_MenuItemsPartial" model="@Model.MenuItem.Where(u=>u.Category.Name.Equals(category.Name))" />
+        </div>
+    }
+</div>
 
 @section Scripts{
+    <script src="http://code.jquery.com/jquery-3.5.0.js"
+            integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+            crossorigin="anonymous">
+    </script>
 
+    <script>
+        var posts = $('.post');
+
+        (function ($) {
+            $("#menu-filters li").click(function () {
+                $("#menu-filters li").removeClass('active btn btn-secondary');
+                //$("#menu-filters li").addClass('ml-1 mr-1 btn btn-default');
+                $(this).addClass('active btn btn-secondary btn btn-default');
+                var selectedFilter = $(this).data("filter");
+                $(".menu-restaurant").fadeOut();
+                $(selectedFilter).slideDown();
+            });
+        })(jQuery);
+    </script>
 }
+
