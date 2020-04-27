@@ -45,7 +45,7 @@ namespace SpiceHouse.Web.Areas.Customer.Controllers
             foreach (var list in this.DetailsCar.ListProducts)
             {
                 list.MenuItem = await this._db.MenuItems.FirstOrDefaultAsync(m => m.Id == list.MenuItemId);
-                this.DetailsCar.Order.OrderTotal += list.MenuItem.Price * list.ItemsCount;
+                this.DetailsCar.Order.OrderTotal += list.MenuItem.Price * list.Count;
                 list.MenuItem.Description = GlobalConstants.ConvertToRawHtml(list.MenuItem.Description);
                 if (list.MenuItem.Description.Length > 100)
                 {

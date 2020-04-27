@@ -456,7 +456,7 @@ namespace SpiceHouse.Data.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ItemsCount")
+                    b.Property<int>("Count")
                         .HasColumnType("int");
 
                     b.Property<int>("MenuItemId")

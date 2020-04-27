@@ -10,7 +10,8 @@ namespace SpiceHouse.Data.Models
     {
         public ShoppingCar()
         {
-            this.ItemsCount = 1;
+           // this.ItemsCount = 1;
+            this.Count = 1;
         }
 
 
@@ -29,7 +30,10 @@ namespace SpiceHouse.Data.Models
         public virtual MenuItem MenuItem { get; set; }
 
 
+        //[Range(1, int.MaxValue, ErrorMessage = "The value should be greater or equal to {1}")]
+        //public int ItemsCount { get; set; }
+
         [Range(1, int.MaxValue, ErrorMessage = "The value should be greater or equal to {1}")]
-        public int ItemsCount { get; set; }
+        public int Count { get; set; }
     }
 }
