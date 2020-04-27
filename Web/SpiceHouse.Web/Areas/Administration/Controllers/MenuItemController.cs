@@ -72,7 +72,7 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
 
             if (subCategoryIdToInt == 0)
             {
-                this.MenuItemViewModel.MenuItem.SubCategoryId = null;
+                return this.Redirect("/Administration/SubCategory"); ;
             }
             else
             {
