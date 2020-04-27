@@ -206,7 +206,7 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
 
 
 
-        // GET: Delete 
+        // GET: Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

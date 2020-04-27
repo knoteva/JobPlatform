@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using SpiceHouse.Common;
@@ -47,7 +48,7 @@ namespace SpiceHouse.Web.Areas.Customer.Controllers
                     allItemsCount += count.ItemsCount;
                 }
 
-             this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, allItemsCount);
+                this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, allItemsCount);
             }
 
             return this.View(indexViewModel);
@@ -72,41 +73,44 @@ namespace SpiceHouse.Web.Areas.Customer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Details(ShoppingCar carObject)
         {
-            carObject.Id = 0;
-            if (this.ModelState.IsValid)
+
+
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            carObject.ApplicationUserId = claim.Value;
+
+            var cartFromDb = await this._db.ShoppingCars.Where(c => c.ApplicationUserId == carObject.ApplicationUserId && c.MenuItemId == carObject.MenuItemId).FirstOrDefaultAsync();
+
+            var subCategoryName = carObject.MenuItem.SubCategory.Name;
+
+            if (!this.ModelState.IsValid && subCategoryName != null)
             {
-                var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-                carObject.ApplicationUserId = claim.Value;
+                var menuItemFromDb = await this._db.MenuItems.Include(m => m.Category).Include(m => m.SubCategory).Where(m => m.Id == carObject.MenuItemId).FirstOrDefaultAsync();
 
-                var cartFromDb = await this._db.ShoppingCars.Where(c => c.ApplicationUserId == carObject.ApplicationUserId && c.MenuItemId == carObject.MenuItemId).FirstOrDefaultAsync();
-
-                if (cartFromDb == null)
+                var car = new ShoppingCar
                 {
-                    await this._db.ShoppingCars.AddAsync(carObject);
-                }
-                else
-                {
-                    cartFromDb.ItemsCount += carObject.ItemsCount;
-                }
+                    MenuItem = menuItemFromDb,
+                    MenuItemId = menuItemFromDb.Id,
+                };
 
-                await this._db.SaveChangesAsync();
-
-                var count = this._db.ShoppingCars.Where(c => c.ApplicationUserId == carObject.ApplicationUserId).ToList().Count();
-                this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, count);
-
-                return this.RedirectToAction("Index");
+                return this.View(car);
             }
 
-            var menuItemFromDb = await this._db.MenuItems.Include(m => m.Category).Include(m => m.SubCategory).Where(m => m.Id == carObject.MenuItemId).FirstOrDefaultAsync();
-
-            var car = new ShoppingCar
+            if (cartFromDb == null)
             {
-                MenuItem = menuItemFromDb,
-                MenuItemId = menuItemFromDb.Id,
-            };
+                await this._db.ShoppingCars.AddAsync(carObject);
+            }
+            else
+            {
+                cartFromDb.ItemsCount += carObject.ItemsCount;
+            }
 
-            return this.View(car);
+            await this._db.SaveChangesAsync();
+
+            var count = this._db.ShoppingCars.Where(c => c.ApplicationUserId == carObject.ApplicationUserId).ToList().Count();
+            this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, count);
+
+            return this.RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

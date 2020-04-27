@@ -30,9 +30,11 @@
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
         [Display(Name = "SubCategory")]
         public int? SubCategoryId { get; set; }
 
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
         [ForeignKey("SubCategoryId")]
         public virtual SubCategory SubCategory { get; set; }
     }

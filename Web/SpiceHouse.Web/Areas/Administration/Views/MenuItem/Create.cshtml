@@ -83,14 +83,15 @@
 </form>
 
 @section Scripts{
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    <script>
-        tinymce.init({
-            forced_root_block: false,
-            selector: 'textarea"
-            //plugins: "lists",
-            //menubar: 'file edit format'
-        });
+
+
+<script>
+    tinymce.init({
+        forced_root_block: false,
+        selector: 'textarea',
+        plugins: "lists"
+        //readonly : 1
+    });</script>
 
 
     </script>

@@ -36,6 +36,10 @@
 
         public DbSet<ShoppingCar> ShoppingCars { get; set; }
 
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
         // public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

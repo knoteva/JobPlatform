@@ -1,4 +1,6 @@
-﻿namespace SpiceHouse.Web.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace SpiceHouse.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;
@@ -7,6 +9,7 @@
     using SpiceHouse.Data.Models;
     using SpiceHouse.Services.Data;
     using SpiceHouse.Web.ViewModels.Settings;
+
 
     using Microsoft.AspNetCore.Mvc;
 
