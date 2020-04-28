@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using SpiceHouse.Common;
-
-namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Common;
     using SpiceHouse.Data;
     using SpiceHouse.Data.Models;
     using SpiceHouse.Data.Models.ViewModels;
@@ -85,7 +84,6 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
                 SubCategoryList = await this._db.SubCategories.OrderBy(p => p.Name).Select(p => p.Name).ToListAsync(),
                 StatusMessage = this.StatusMessage,
             };
-
 
             return this.View(modelVm);
         }
@@ -182,7 +180,6 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
             this._db.SubCategories.Remove(subCategory);
             await this._db.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));
-
         }
 
         // GET: Details

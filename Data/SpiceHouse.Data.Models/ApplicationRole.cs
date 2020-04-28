@@ -3,9 +3,8 @@ namespace SpiceHouse.Data.Models
 {
     using System;
 
-    using SpiceHouse.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SpiceHouse.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {

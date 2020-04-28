@@ -1,8 +1,8 @@
 ﻿namespace SpiceHouse.Data.Configurations
 {
-    using SpiceHouse.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using SpiceHouse.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

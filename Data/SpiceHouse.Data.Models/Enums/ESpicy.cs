@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SpiceHouse.Data.Models.Enums
+﻿namespace SpiceHouse.Data.Models.Enums
 {
     public enum ESpicy
     {

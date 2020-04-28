@@ -1,15 +1,12 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
 
-using System.ComponentModel.DataAnnotations;
-
 namespace SpiceHouse.Data.Models
 {
     using System;
     using System.Collections.Generic;
 
-    using SpiceHouse.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SpiceHouse.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

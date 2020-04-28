@@ -30,6 +30,7 @@
     <Content Include="Areas\Customer\Views\Car\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
     <None Include="Views\Shared\Components\UserName\Default.cshtml" />
   </ItemGroup>
 

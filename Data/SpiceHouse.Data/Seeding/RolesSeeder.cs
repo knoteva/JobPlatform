@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using SpiceHouse.Common;
-    using SpiceHouse.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using SpiceHouse.Common;
+    using SpiceHouse.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

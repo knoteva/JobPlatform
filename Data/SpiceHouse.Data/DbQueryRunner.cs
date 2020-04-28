@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using SpiceHouse.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

@@ -1,9 +1,16 @@
-﻿using System;
-
-namespace SpiceHouse.Web
+﻿namespace SpiceHouse.Web
 {
+    using System;
     using System.Reflection;
 
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using SpiceHouse.Data;
     using SpiceHouse.Data.Common;
     using SpiceHouse.Data.Common.Repositories;
@@ -14,15 +21,6 @@ namespace SpiceHouse.Web
     using SpiceHouse.Services.Mapping;
     using SpiceHouse.Services.Messaging;
     using SpiceHouse.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
 
     public class Startup
     {
@@ -80,7 +78,6 @@ namespace SpiceHouse.Web
                 options.LogoutPath = $"/Identity/Account/Logout";
 
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
-
             });
         }
 

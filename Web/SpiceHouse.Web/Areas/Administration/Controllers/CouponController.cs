@@ -1,23 +1,23 @@
-﻿using System;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using SpiceHouse.Common;
-
-namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using SpiceHouse.Data;
-    using SpiceHouse.Data.Models;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Common;
+    using SpiceHouse.Data;
+    using SpiceHouse.Data.Models;
 
     [Area("Administration")]
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class CouponController : Controller
     {
         private readonly ApplicationDbContext _db;
+
         // dependency injection
         private readonly IWebHostEnvironment _hostingEnvironment;
 
@@ -127,7 +127,7 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
                 couponFromDb.IsActive = coupons.IsActive;
 
                 await this._db.SaveChangesAsync();
-                return this.RedirectToAction(nameof(Index));
+                return this.RedirectToAction(nameof(this.Index));
             }
 
             return this.View(coupons);

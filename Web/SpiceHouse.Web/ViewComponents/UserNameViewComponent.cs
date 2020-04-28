@@ -25,6 +25,5 @@
 
             return this.View(userFromDb);
         }
-
     }
 }

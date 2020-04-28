@@ -27,7 +27,6 @@
 
         public async Task<IActionResult> Index()
         {
-
             this.DetailsCar = new OrderDetailsCarViewModel()
             {
                 Order = new Order(),

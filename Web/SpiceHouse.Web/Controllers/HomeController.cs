@@ -1,21 +1,18 @@
-﻿using System;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using SpiceHouse.Common;
-using SpiceHouse.Data.Models;
-
-namespace SpiceHouse.Web.Areas.Customer.Controllers
+﻿namespace SpiceHouse.Web.Controllers
 {
     using System.Diagnostics;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Common;
     using SpiceHouse.Data;
+    using SpiceHouse.Data.Models;
     using SpiceHouse.Data.Models.ViewModels;
-    using SpiceHouse.Web.Controllers;
     using SpiceHouse.Web.ViewModels;
 
     public class HomeController : BaseController

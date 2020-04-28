@@ -1,9 +1,8 @@
 ﻿namespace SpiceHouse.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using SpiceHouse.Data.Models;
     using SpiceHouse.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

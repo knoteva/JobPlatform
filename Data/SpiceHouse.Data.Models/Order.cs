@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-
-namespace SpiceHouse.Data.Models
+﻿namespace SpiceHouse.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Order
     {
-
         public int Id { get; set; }
 
         [Required]
@@ -35,6 +32,5 @@ namespace SpiceHouse.Data.Models
         public string PhoneNumber { get; set; }
 
         public string TransactionId { get; set; }
-
     }
 }

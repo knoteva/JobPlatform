@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace SpiceHouse.Data.Migrations
+﻿namespace SpiceHouse.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddMenuItemsInDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +19,7 @@ namespace SpiceHouse.Data.Migrations
                     Picture = table.Column<byte[]>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
-                    SubCategoryId = table.Column<int>(nullable: false)
+                    SubCategoryId = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {

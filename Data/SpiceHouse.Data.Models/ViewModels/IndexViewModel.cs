@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SpiceHouse.Data.Models.ViewModels
+﻿namespace SpiceHouse.Data.Models.ViewModels
 {
+    using System.Collections.Generic;
+
     public class IndexViewModel
     {
         public IEnumerable<MenuItem> MenuItem { get; set; }

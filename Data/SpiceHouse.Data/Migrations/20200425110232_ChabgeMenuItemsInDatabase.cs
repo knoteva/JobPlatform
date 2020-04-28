@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace SpiceHouse.Data.Migrations
+﻿namespace SpiceHouse.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class ChabgeMenuItemsInDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

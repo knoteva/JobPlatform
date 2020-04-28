@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace SpiceHouse.Data.Migrations
+﻿namespace SpiceHouse.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddOrderToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,7 +26,7 @@ namespace SpiceHouse.Data.Migrations
                     OrderTotal = table.Column<double>(nullable: false),
                     ClientName = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
-                    TransactionId = table.Column<string>(nullable: true)
+                    TransactionId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

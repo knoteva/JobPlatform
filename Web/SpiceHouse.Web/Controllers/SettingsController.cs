@@ -1,17 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace SpiceHouse.Web.Controllers
+﻿namespace SpiceHouse.Web.Controllers
 {
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using SpiceHouse.Data.Common.Repositories;
     using SpiceHouse.Data.Models;
     using SpiceHouse.Services.Data;
     using SpiceHouse.Web.ViewModels.Settings;
-
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

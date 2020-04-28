@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-
-namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
@@ -204,8 +203,6 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
             return this.RedirectToAction(nameof(this.Index));
         }
 
-
-
         // GET: Delete
         public async Task<IActionResult> Delete(int? id)
         {
@@ -250,7 +247,6 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
                 }
 
                 await this._db.SaveChangesAsync();
-
             }
 
             return this.RedirectToAction(nameof(this.Index));

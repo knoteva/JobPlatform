@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace SpiceHouse.Data.Migrations
+﻿namespace SpiceHouse.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class AddCouponToDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +18,7 @@ namespace SpiceHouse.Data.Migrations
                     Discount = table.Column<decimal>(nullable: false),
                     MinimumAmount = table.Column<decimal>(nullable: false),
                     Picture = table.Column<byte[]>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false)
+                    IsActive = table.Column<bool>(nullable: false),
                 },
                 constraints: table =>
                 {

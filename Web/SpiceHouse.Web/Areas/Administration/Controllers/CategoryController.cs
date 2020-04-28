@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using SpiceHouse.Common;
-
-namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Common;
     using SpiceHouse.Data;
     using SpiceHouse.Data.Models;
 

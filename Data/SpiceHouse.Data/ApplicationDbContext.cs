@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using SpiceHouse.Data.Common.Models;
-    using SpiceHouse.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Data.Common.Models;
+    using SpiceHouse.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -41,7 +40,6 @@
         public DbSet<Order> Orders { get; set; }
 
         // public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -81,7 +79,7 @@
                 method.Invoke(null, new object[] { builder });
             }
 
-            //builder.Entity<SubCategory>()
+            // builder.Entity<SubCategory>()
             //    .HasOne(s => s.Category)
             //    .WithMany(c => c.SubCategories)
             //    .IsRequired()
@@ -95,7 +93,7 @@
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
-            //builder.Entity<EmployeeTask>()
+            // builder.Entity<EmployeeTask>()
             //    .HasKey(k => new { k.TaskId, k.EmployeeId });
         }
 

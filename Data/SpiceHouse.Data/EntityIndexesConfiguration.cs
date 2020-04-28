@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using SpiceHouse.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {
