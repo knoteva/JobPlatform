@@ -1,4 +1,6 @@
-﻿namespace SpiceHouse.Data.Models
+﻿using SpiceHouse.Data.Models.Attributes;
+
+namespace SpiceHouse.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
 

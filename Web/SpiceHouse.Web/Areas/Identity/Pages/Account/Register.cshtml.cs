@@ -104,26 +104,25 @@
                 var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
-                    //this._logger.LogInformation("User created a new account with password.");
+                    // this._logger.LogInformation("User created a new account with password.");
 
-                    //var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    //var callbackUrl = this.Url.Page(
+                    // var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
+                    // code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    // var callbackUrl = this.Url.Page(
                     //    "/Account/ConfirmEmail",
                     //    pageHandler: null,
                     //    values: new { area = "Identity", userId = user.Id, code = code },
                     //    protocol: this.Request.Scheme);
 
-                    //await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
+                    // await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    //if (this._userManager.Options.SignIn.RequireConfirmedAccount)
-                    //{
+                    // if (this._userManager.Options.SignIn.RequireConfirmedAccount)
+                    // {
                     //    return this.RedirectToPage("RegisterConfirmation", new { email = this.Input.Email });
-                    //}
-                    //else
-                    //{
-
+                    // }
+                    // else
+                    // {
                     if (_userManager.Users.Count() == 1)
                     {
                         await _userManager.AddToRoleAsync(user, "Administrator");

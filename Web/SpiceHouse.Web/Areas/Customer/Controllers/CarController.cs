@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SpiceHouse.Common;
-using SpiceHouse.Data;
-using SpiceHouse.Data.Models;
-using SpiceHouse.Data.Models.ViewModels;
-
-namespace SpiceHouse.Web.Areas.Customer.Controllers
+﻿namespace SpiceHouse.Web.Areas.Customer.Controllers
 {
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using SpiceHouse.Common;
+    using SpiceHouse.Data;
+    using SpiceHouse.Data.Models;
+    using SpiceHouse.Data.Models.ViewModels;
+
     [Area("Customer")]
     public class CarController : Controller
     {

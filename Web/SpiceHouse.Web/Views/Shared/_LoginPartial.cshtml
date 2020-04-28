@@ -9,6 +9,7 @@
     {
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @(this.User.Identity.Name)!</a>
+            @*<a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@await Component.InvokeAsync("UserName")</a>*@
         </li>
         @*if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
         {

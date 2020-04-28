@@ -42,11 +42,7 @@ namespace SpiceHouse.Web.Areas.Customer.Controllers
             if (claim != null)
             {
                 var allItems = this._db.ShoppingCars.Where(u => u.ApplicationUserId == claim.Value).ToList();
-                var allItemsCount = 0;
-                foreach (var count in allItems)
-                {
-                    allItemsCount += count.Count;
-                }
+                var allItemsCount = allItems.Sum(count => count.Count);
 
                 this.HttpContext.Session.SetInt32(GlobalConstants.SsCarItemsCount, allItemsCount);
             }

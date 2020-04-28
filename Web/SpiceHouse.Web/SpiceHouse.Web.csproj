@@ -16,6 +16,10 @@
     <EmbeddedResource Remove="Areas\Customer\**" />
     <None Remove="Areas\Customer\**" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\Components\UserName\Default.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
@@ -24,6 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Customer\Views\Car\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Shared\Components\UserName\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

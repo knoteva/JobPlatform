@@ -72,7 +72,7 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
 
             if (subCategoryIdToInt == 0)
             {
-                return this.Redirect("/Administration/SubCategory"); ;
+                return this.Redirect("/Administration/SubCategory");
             }
             else
             {
@@ -232,6 +232,7 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
         {
             var webRootPath = this._hostingEnvironment.WebRootPath;
             var menuItem = await this._db.MenuItems.FindAsync(id);
+            var shoppingItem = await this._db.ShoppingCars.FindAsync(id);
 
             if (menuItem != null)
             {
@@ -243,6 +244,11 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
                 }
 
                 this._db.MenuItems.Remove(menuItem);
+                if (shoppingItem != null)
+                {
+                    this._db.ShoppingCars.Remove(shoppingItem);
+                }
+
                 await this._db.SaveChangesAsync();
 
             }

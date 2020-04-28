@@ -9,33 +9,40 @@
 
         public const string DefaultFoodImage = "default_food.png";
 
+        public const string DefaultCouponImage = "default_coupon.png";
+
         public const string SsCarItemsCount = "ssCarItemsCount";
 
         public static string ConvertToRawHtml(string source)
         {
-            char[] array = new char[source.Length];
-            int arrayIndex = 0;
-            bool inside = false;
-
-            for (int i = 0; i < source.Length; i++)
+            if (source == null)
             {
-                char let = source[i];
-                if (let == '<')
+                source = string.Empty;
+            }
+
+            var array = new char[source.Length];
+            var arrayIndex = 0;
+            var inside = false;
+
+            foreach (var @let in source)
+            {
+                switch (@let)
                 {
-                    inside = true;
-                    continue;
+                    case '<':
+                        inside = true;
+                        continue;
+                    case '>':
+                        inside = false;
+                        continue;
                 }
-                if (let == '>')
-                {
-                    inside = false;
-                    continue;
-                }
+
                 if (!inside)
                 {
-                    array[arrayIndex] = let;
+                    array[arrayIndex] = @let;
                     arrayIndex++;
                 }
             }
+
             return new string(array, 0, arrayIndex);
         }
     }

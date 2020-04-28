@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using SpiceHouse.Common;
 
 namespace SpiceHouse.Web.Areas.Administration.Controllers
@@ -16,10 +18,13 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
     public class CouponController : Controller
     {
         private readonly ApplicationDbContext _db;
+        // dependency injection
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public CouponController(ApplicationDbContext db)
+        public CouponController(ApplicationDbContext db, IWebHostEnvironment hostingEnvironment)
         {
             this._db = db;
+            this._hostingEnvironment = hostingEnvironment;
         }
 
         // Pass coupons to the View
@@ -42,19 +47,26 @@ namespace SpiceHouse.Web.Areas.Administration.Controllers
             if (this.ModelState.IsValid)
             {
                 var files = this.HttpContext.Request.Form.Files;
-                if (files.Count > 0)
+                var webRootPath = this._hostingEnvironment.WebRootPath;
+                byte[] pic;
+                if (!files.Any())
                 {
-                    byte[] pic;
+                    var uploads = Path.Combine(webRootPath, @"images\" + GlobalConstants.DefaultCouponImage);
 
+                    var fileBytes = System.IO.File.ReadAllBytes(uploads);
+                    pic = fileBytes.ToArray();
+                }
+                else
+                {
                     await using (var fileStreamOne = files[0].OpenReadStream())
                     {
                         await using var memoryStreamOne = new MemoryStream();
                         fileStreamOne.CopyTo(memoryStreamOne);
                         pic = memoryStreamOne.ToArray();
                     }
-
-                    coupons.Picture = pic;
                 }
+
+                coupons.Picture = pic;
 
                 this._db.Coupons.Add(coupons);
                 await this._db.SaveChangesAsync();
