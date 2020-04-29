@@ -51,19 +51,17 @@
                 byte[] pic;
                 if (!files.Any())
                 {
-                    var uploads = Path.Combine(webRootPath, @"images\" + GlobalConstants.DefaultCouponImage);
+                    var uploads = Path.Combine(webRootPath, @"images\default_images\" + GlobalConstants.DefaultCouponImage);
 
                     var fileBytes = System.IO.File.ReadAllBytes(uploads);
                     pic = fileBytes.ToArray();
                 }
                 else
                 {
-                    await using (var fileStreamOne = files[0].OpenReadStream())
-                    {
-                        await using var memoryStreamOne = new MemoryStream();
-                        fileStreamOne.CopyTo(memoryStreamOne);
-                        pic = memoryStreamOne.ToArray();
-                    }
+                    await using var fileStreamOne = files[0].OpenReadStream();
+                    await using var memoryStreamOne = new MemoryStream();
+                    fileStreamOne.CopyTo(memoryStreamOne);
+                    pic = memoryStreamOne.ToArray();
                 }
 
                 coupons.Picture = pic;

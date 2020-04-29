@@ -105,7 +105,13 @@
             }
             else
             {
-                var uploads = Path.Combine(webRootPath, @"images\" + GlobalConstants.DefaultFoodImage);
+                var imagePath = Path.Combine(webRootPath, @"images\" + this.MenuItemViewModel.MenuItem.Id + ".png");
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+
+                var uploads = Path.Combine(webRootPath, @"images\default_images\" + GlobalConstants.DefaultFoodImage);
                 System.IO.File.Copy(uploads, webRootPath + @"\images\" + this.MenuItemViewModel.MenuItem.Id + ".png");
                 menuItemFromDb.Picture = @"\images\" + this.MenuItemViewModel.MenuItem.Id + ".png";
             }
@@ -269,5 +275,7 @@
 
             return this.View(this.MenuItemViewModel);
         }
+
+
     }
 }

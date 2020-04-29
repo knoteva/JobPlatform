@@ -37,6 +37,8 @@
   <ItemGroup>
     <PackageReference Include="ApiAiSDK" Version="1.6.5" />
     <PackageReference Include="AWSSDK.Lex" Version="3.3.104.63" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.45.0.1922" />
+    <PackageReference Include="HttpPostedFileHelper" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
@@ -67,6 +69,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="client_secret.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\favicon.ico">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

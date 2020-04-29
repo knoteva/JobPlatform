@@ -357,3 +357,8 @@ MigrationBackup/
 appsettings.Production.json
 *.min.css
 *.min.js
+
+# My Custom ignores
+**/wwwroot/images/
+!/images/default_images
+
