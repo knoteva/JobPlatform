@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SpiceHouse.Common.Extensions
+﻿namespace SpiceHouse.Web.Extensions
 {
     public static class ReflectionExtension
     {
