@@ -93,7 +93,7 @@
 
             if (files.Count > 0)
             {
-                var uploads = Path.Combine(webRootPath, "images");
+                var uploads = Path.Combine(webRootPath, "images\\uploaded_images");
                 var extension = Path.GetExtension(files[0].FileName);
 
                 await using (var filesStream = new FileStream(Path.Combine(uploads, this.MenuItemViewModel.MenuItem.Id + extension), FileMode.Create))
@@ -112,8 +112,8 @@
                 }
 
                 var uploads = Path.Combine(webRootPath, @"images\default_images\" + GlobalConstants.DefaultFoodImage);
-                System.IO.File.Copy(uploads, webRootPath + @"\images\" + this.MenuItemViewModel.MenuItem.Id + ".png");
-                menuItemFromDb.Picture = @"\images\" + this.MenuItemViewModel.MenuItem.Id + ".png";
+                System.IO.File.Copy(uploads, webRootPath + @"\images\uploaded_images\" + this.MenuItemViewModel.MenuItem.Id + ".png");
+                menuItemFromDb.Picture = @"\images\uploaded_images\" + this.MenuItemViewModel.MenuItem.Id + ".png";
             }
 
             await this._db.SaveChangesAsync();
@@ -179,7 +179,7 @@
 
             if (files.Count > 0)
             {
-                var uploads = Path.Combine(webRootPath, "images");
+                var uploads = Path.Combine(webRootPath, "images\\uploaded_images");
                 var extensionNew = Path.GetExtension(files[0].FileName);
 
                 var imagePath = Path.Combine(webRootPath, menuItemFromDb.Picture.TrimStart('\\'));
@@ -194,7 +194,7 @@
                     files[0].CopyTo(filesStream);
                 }
 
-                menuItemFromDb.Picture = @"\images\" + this.MenuItemViewModel.MenuItem.Id + extensionNew;
+                menuItemFromDb.Picture = @"\images\uploaded_images\" + this.MenuItemViewModel.MenuItem.Id + extensionNew;
             }
 
             menuItemFromDb.Name = this.MenuItemViewModel.MenuItem.Name;

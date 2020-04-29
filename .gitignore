@@ -359,6 +359,5 @@ appsettings.Production.json
 *.min.js
 
 # My Custom ignores
-**/wwwroot/images/
-!/images/default_images
+**/wwwroot/images/uploaded_images
 
