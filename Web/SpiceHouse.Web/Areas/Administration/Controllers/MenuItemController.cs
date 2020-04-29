@@ -101,11 +101,11 @@
                     files[0].CopyTo(filesStream);
                 }
 
-                menuItemFromDb.Picture = @"\images\" + this.MenuItemViewModel.MenuItem.Id + extension;
+                menuItemFromDb.Picture = @"\images\uploaded_images\" + this.MenuItemViewModel.MenuItem.Id + extension;
             }
             else
             {
-                var imagePath = Path.Combine(webRootPath, @"images\" + this.MenuItemViewModel.MenuItem.Id + ".png");
+                var imagePath = Path.Combine(webRootPath, @"images\uploaded_images\" + this.MenuItemViewModel.MenuItem.Id + ".png");
                 if (System.IO.File.Exists(imagePath))
                 {
                     System.IO.File.Delete(imagePath);
