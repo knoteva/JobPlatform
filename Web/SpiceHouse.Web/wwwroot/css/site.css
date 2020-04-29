@@ -79,4 +79,5 @@ body {
 
 .search-background {
     background: url('/images/default_images/Background.jpg');
+    background-size: cover;
 }
