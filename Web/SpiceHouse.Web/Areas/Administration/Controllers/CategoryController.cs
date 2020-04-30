@@ -130,9 +130,12 @@
 
             var shoppingItem = await this._db.ShoppingCars.FindAsync(id);
 
-            if (shoppingItem.MenuItemId == menuItemDb.Id)
+            if (shoppingItem != null)
             {
-                this._db.ShoppingCars.Remove(shoppingItem);
+                if (shoppingItem.MenuItemId == menuItemDb.Id)
+                {
+                    this._db.ShoppingCars.Remove(shoppingItem);
+                }
             }
 
             foreach (var menuItem in this._db.MenuItems)
