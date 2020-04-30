@@ -126,12 +126,13 @@
                 return this.View();
             }
 
-            foreach (var sub in this._db.SubCategories)
+            var menuItemDb = await this._db.MenuItems.Include(m => m.Category).Include(m => m.SubCategory).Where(m => m.Id == id).FirstOrDefaultAsync();
+
+            var shoppingItem = await this._db.ShoppingCars.FindAsync(id);
+
+            if (shoppingItem.MenuItemId == menuItemDb.Id)
             {
-                if (sub.CategoryId == id)
-                {
-                    this._db.SubCategories.Remove(sub);
-                }
+                this._db.ShoppingCars.Remove(shoppingItem);
             }
 
             foreach (var menuItem in this._db.MenuItems)
@@ -142,6 +143,13 @@
                 }
             }
 
+            foreach (var sub in this._db.SubCategories)
+            {
+                if (sub.CategoryId == id)
+                {
+                    this._db.SubCategories.Remove(sub);
+                }
+            }
             this._db.Categories.Remove(category);
             await this._db.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));

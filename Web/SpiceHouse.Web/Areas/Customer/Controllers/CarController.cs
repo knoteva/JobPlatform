@@ -38,7 +38,10 @@
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
             var cart = this._db.ShoppingCars.Where(c => c.ApplicationUserId == claim.Value);
-            this.DetailsCar.ListProducts = cart.ToList();
+            if (claim != null)
+            {
+                this.DetailsCar.ListProducts = cart.ToList();
+            }
             foreach (var list in this.DetailsCar.ListProducts)
             {
                 list.MenuItem = await this._db.MenuItems.FirstOrDefaultAsync(m => m.Id == list.MenuItemId);
