@@ -42,6 +42,7 @@
             {
                 this.DetailsCar.ListProducts = cart.ToList();
             }
+
             foreach (var list in this.DetailsCar.ListProducts)
             {
                 list.MenuItem = await this._db.MenuItems.FirstOrDefaultAsync(m => m.Id == list.MenuItemId);

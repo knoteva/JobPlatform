@@ -1,4 +1,7 @@
-﻿namespace SpiceHouse.Web.Areas.Administration.Controllers
+﻿using System;
+using System.Net;
+
+namespace SpiceHouse.Web.Areas.Administration.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -177,6 +180,12 @@
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var subCategory = await this._db.SubCategories.SingleOrDefaultAsync(m => m.Id == id);
+
+            // var menuItemDb = await this._db.MenuItems.Include(m => m.Category).Include(m => m.SubCategory).Where(m => m.SubCategoryId == id).FirstOrDefaultAsync();
+            // if (menuItemDb != null)
+            // {
+            //    this.StatusMessage = "Error: The " + " already exist";
+            // }
             this._db.SubCategories.Remove(subCategory);
             await this._db.SaveChangesAsync();
             return this.RedirectToAction(nameof(this.Index));
